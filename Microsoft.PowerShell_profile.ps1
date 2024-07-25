@@ -10,7 +10,6 @@ Set-Alias -Name ll -Value Get-ChildItemPretty
 Set-Alias -Name ls -Value Get-ChildItemPretty
 Set-Alias -Name rm -Value Remove-ItemExtended
 Set-Alias -Name su -Value sudo
-Set-Alias -Name tif Show-ThisIsFine
 Set-Alias -Name touch -Value New-File
 Set-Alias -Name us -Value Update-Software
 Set-Alias -Name v -Value nvim
@@ -67,11 +66,6 @@ function Get-ChildItemPretty {
     Write-Host ""
     eza -a -l --header --icons --hyperlink --time-style relative $Path
     Write-Host ""
-}
-
-function Show-ThisIsFine {
-    Write-Verbose "Running thisisfine.ps1"
-    Show-ColorScript -Name thisisfine
 }
 
 function Remove-ItemExtended {
