@@ -2,7 +2,7 @@
 
 need
 
-- powershell 7 at least
+- powershell 7
 - zoxide
 - ripgrep
 - oh-my-posh
