@@ -2,7 +2,7 @@
 
 need
 
---zoxide
---ripgrep
---oh-my-posh
---fastfetch
+-zoxide
+-ripgrep
+-oh-my-posh
+-fastfetch
