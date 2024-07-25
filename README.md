@@ -2,7 +2,9 @@
 
 need
 
-#zoxide
-#ripgrep
-#oh-my-posh
-#fastfetch
+# powershell 7 at least
+# zoxide
+# ripgrep
+# oh-my-posh
+# fastfetch
+# neovim
