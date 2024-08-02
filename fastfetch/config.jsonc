@@ -4,6 +4,9 @@
         "separator": "▐ ",
       "color": {
     }
+     "key": {
+"width": 15
+},
     },
 
     "modules": [
