@@ -1,5 +1,4 @@
 # Aliases
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Set-Alias -Name cat -Value bat
 Set-Alias -Name df -Value Get-Volume
 Set-Alias -Name ff -Value Find-File
@@ -14,8 +13,11 @@ Set-Alias -Name touch -Value New-File
 Set-Alias -Name us -Value Update-Software
 Set-Alias -Name v -Value nvim
 Set-Alias -Name vim -Value nvim
+Set-Alias -Name neofetch fastfetch
 Set-Alias np "C:\Program Files\Notepad++\notepad++.exe"
 Set-Alias drive Get-PSDrive
+Set-Alias shutdown Stop-Computer
+Set-Alias reboot Restart-Computer
 
 #Functions
 function Update-Software {
@@ -64,9 +66,20 @@ function Get-ChildItemPretty {
     )
 
     Write-Host ""
-    eza -a -l --header --icons --hyperlink --time-style relative $Path
+    eza -l --header --icons --hyperlink --time-style relative $Path
     Write-Host ""
 }
+
+function ipp { (Invoke-WebRequest http://ifconfig.me/ip).Content }
+
+function reload {
+    & $profile
+}
+
+function sysinfo { Get-ComputerInfo }
+
+Function os { systeminfo }
+
 
 function Remove-ItemExtended {
     [CmdletBinding()]
