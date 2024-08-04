@@ -8,3 +8,4 @@ need
 - oh-my-posh
 - fastfetch
 - neovim
+- bat
