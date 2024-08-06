@@ -1,5 +1,4 @@
 # Aliases
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Set-Alias -Name cat -Value bat
 Set-Alias -Name df -Value Get-Volume
 Set-Alias -Name ff -Value Find-File
