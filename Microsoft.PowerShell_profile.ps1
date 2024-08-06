@@ -1,4 +1,5 @@
 # Aliases
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Set-Alias -Name cat -Value bat
 Set-Alias -Name df -Value Get-Volume
 Set-Alias -Name ff -Value Find-File
@@ -80,7 +81,10 @@ function sysinfo { Get-ComputerInfo }
 
 Function os { systeminfo }
 
+function debloat { 
+& ([scriptblock]::Create((irm "https://win11debloat.raphi.re/")))
 
+}
 function Remove-ItemExtended {
     [CmdletBinding()]
     param (
@@ -113,10 +117,6 @@ function uptime {
     } else {
         net statistics workstation | Select-String "since" | ForEach-Object { $_.ToString().Replace('Statistics since ', '') }
     }
-}
-
-function debloat { 
-& ([scriptblock]::Create((irm "https://win11debloat.raphi.re/")))
 }
 
 # Environment Variables
