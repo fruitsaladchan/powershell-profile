@@ -83,8 +83,23 @@ Function os { systeminfo }
 
 function debloat { 
 & ([scriptblock]::Create((irm "https://win11debloat.raphi.re/")))
-
 }
+
+function repair {
+    if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        $newProcess = Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"& { sfc /scannow }`"" -Verb RunAs -PassThru
+
+        $newProcess.WaitForExit()
+    } else {
+        Write-Output "Running sfc /scannow..."
+        sfc /scannow
+    }
+}
+
+function bios {
+  Get-CimInstance -ClassName Win32_Bios 
+}
+
 function Remove-ItemExtended {
     [CmdletBinding()]
     param (
