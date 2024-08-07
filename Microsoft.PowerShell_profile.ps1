@@ -125,13 +125,25 @@ function admin {
     }
 }
 
+
 function uptime {
-    if ($PSVersionTable.PSVersion.Major -eq 5) {
-        Get-WmiObject win32_operatingsystem | Select-Object @{Name='LastBootUpTime'; Expression={$_.ConverttoDateTime($_.lastbootuptime)}} | Format-Table -HideTableHeaders
-    } else {
-        net statistics workstation | Select-String "since" | ForEach-Object { $_.ToString().Replace('Statistics since ', '') }
+    $uptime = Get-Uptime
+    $days = $uptime.Days
+    $hours = $uptime.Hours
+    $minutes = $uptime.Minutes
+
+    if ($days -gt 0) {
+        Write-Output "Uptime: $days days, $hours hours, and $minutes minutes"
+    }
+    elseif ($hours -gt 0) {
+        Write-Output "Uptime: $hours hours and $minutes minutes"
+    }
+    else {
+        Write-Output "Uptime: $minutes minutes"
     }
 }
+
+
 
 # Environment Variables
 $ENV:BAT_CONFIG_DIR = "$ENV:WindotsLocalRepo\bat"
