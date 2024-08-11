@@ -9,3 +9,4 @@ need
 - fastfetch
 - neovim
 - bat
+- eza
