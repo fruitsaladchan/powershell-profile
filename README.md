@@ -10,3 +10,5 @@ need
 - neovim
 - bat
 - eza
+
+also change location of oh my posh promt location
