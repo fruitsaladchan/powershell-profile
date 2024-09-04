@@ -150,10 +150,15 @@ $ENV:BAT_CONFIG_DIR = "$ENV:WindotsLocalRepo\bat"
 $ENV:FZF_DEFAULT_OPTS = '--color=fg:-1,fg+:#ffffff,bg:-1,bg+:#3c4048 --color=hl:#5ea1ff,hl+:#5ef1ff,info:#ffbd5e,marker:#5eff6c --color=prompt:#ff5ef1,spinner:#bd5eff,pointer:#ff5ea0,header:#5eff6c --color=gutter:-1,border:#3c4048,scrollbar:#7b8496,label:#7b8496 --color=query:#ffffff --border="rounded" --border-label="" --preview-window="border-rounded" --height 40% --preview="bat -n --color=always {}"'
 
 # Prompt Setup
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\catppuccin_mocha.omp.json" | Invoke-Expression
-#Enable-TransientPrompt
-Invoke-Expression (& { ( zoxide init powershell --cmd cd | Out-String ) })
+$poshConfigPath = "$env:POSH_THEMES_PATH\catppuccin_mocha.omp.json"
+if (Test-Path $poshConfigPath) {
+    oh-my-posh init pwsh --config $poshConfigPath | Invoke-Expression
+} else {
+    Write-Warning "Oh My Posh configuration file not found: $poshConfigPath"
+}
 
+# Initialize zoxide
+Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
 
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -PredictionViewStyle InlineView
@@ -163,4 +168,6 @@ Import-Module -Name CompletionPredictor
 if ([Environment]::GetCommandLineArgs().Contains("-NonInteractive") -or [Environment]::GetCommandLineArgs().Contains("-CustomPipeName")) {
     return
 }
+
 fastfetch
+
